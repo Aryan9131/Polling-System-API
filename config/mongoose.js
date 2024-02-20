@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 let db;
 async function main(){
-   db=await mongoose.connect('mongodb://127.0.0.1:27017/PollingAPI');
+   db=await mongoose.connect(`${DB}`);
    console.log("Database Connected successfully");
 }
  main().catch((error)=>{
@@ -9,4 +9,5 @@ async function main(){
  })
 
  module.exports=db;
+
 

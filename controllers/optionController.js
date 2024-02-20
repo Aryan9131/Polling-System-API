@@ -1,12 +1,13 @@
 const Question = require('../models/question');
-const Option = require('../models/option')
+const Option = require('../models/option');
+
 module.exports.createOpt = async function (req, res) {
     const question = await Question.findOne({ _id: req.params.id });
     const newOption = new Option({
         text: req.body.text,
         ques_id: req.params.id,
     })
-    newOption.link_to_vote=`http://localhost:8000/options/${newOption.id}/add_vote`
+    newOption.link_to_vote=`${process.env.BASE_URL}/${newOption.id}/add_vote`
     await newOption.save();
     question.options.push(newOption.id);
     await question.save();
