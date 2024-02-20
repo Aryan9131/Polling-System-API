@@ -1,8 +1,7 @@
 {
   "main": "index.js",
    "scripts": {
-      "start": "node index.js",
-      "prod_start": "cross-env ISSUE_TRACKER_ENVIRONMENT=production node index.js"
+      "start": "node index.js"
    },
   "dependencies": {
     "dotenv": "^16.4.5",
