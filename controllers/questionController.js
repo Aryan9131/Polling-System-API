@@ -18,7 +18,7 @@ module.exports.createQues=async function(req, res){
 
 module.exports.deleteQues=async function(req, res){
    const delQues=await Question.deleteOne({_id: req.params.id});
-   const delOpts=await Option.deleteMany({question :req.params.id});
+   const delOpts=await Option.deleteMany({ques_id :req.params.id});
    return res.status(200).json({
       message : "Question and related options are deleted !"
    })
