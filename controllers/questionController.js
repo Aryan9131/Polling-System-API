@@ -1,5 +1,22 @@
 const Question=require('../models/question');
 const Option=require('../models/option');
+module.exports.findAll=async function(req, res){
+    try {
+    const questions=await Question.find().populate({
+      path :'options',
+    });
+    return res.status(200).json({
+       question : questions
+    })
+   } catch (error) {
+    console.log(error);
+    return res.status(404).json({
+      message : "Error while finding Question",
+      errorMessage : error
+   })
+   }
+}
+
 module.exports.createQues=async function(req, res){
     try {
         const newQues=new Question(req.body);
