@@ -21,9 +21,10 @@ module.exports.deleteOpt = async function (req, res) {
     try {
         const opt = await Option.findOne({ _id: req.params.id });
        const delOpt= await Option.deleteOne({_id :req.params.id});
-       const updated = await Question.findByIdAndUpdate(opt.question,{ $pull: { options: req.params.id } },
+       const updated = await Question.findByIdAndUpdate(opt.ques_id,{ $pull: { options: req.params.id } },
             { new: true } // To get the updated document
         );
+        await updated.save();
         return res.status(200).json({
             message: "option deleted",
             option : delOpt
