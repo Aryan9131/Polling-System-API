@@ -1,6 +1,6 @@
 const Question = require('../models/question');
 const Option = require('../models/option');
-
+require('dotenv').config() 
 module.exports.createOpt = async function (req, res) {
     const question = await Question.findOne({ _id: req.params.id });
     const newOption = new Option({
